@@ -1,5 +1,4 @@
 import styles from './Home.module.css'
-import styles from './Home.module.css'
 import {useFetchDocuments} from '../../hooks/useFetchDocuments'
 import {useNavigate} from 'react-router-dom'
 
