@@ -1,7 +1,7 @@
-import styles from './Navbar.module.css'
-import { NavLink } from 'react-router-dom'
-import { useAuthentication } from '../hooks/useAuthentication'
-import { useAuthValue } from '../context/AuthContex'
+import styles from './Navbar.module.css';
+import { NavLink } from 'react-router-dom';
+import { useAuthentication } from '../hooks/useAuthentication';
+import { useAuthValue } from '../context/AuthContex';
 
 const Navbar = () => {
   const { logout } = useAuthentication()
@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <>
       <nav className={styles.navbar}>
-        <ul className={styles.link_list}>
+        <ul className= {styles.links_list}>
           <NavLink to="/" className={styles.brand} activeClassName={styles.active}>
             <li><span>Life</span>Dev</li>
           </NavLink>
@@ -20,7 +20,7 @@ const Navbar = () => {
                 <NavLink
                   to='/login'
                   className={({ isActive }) => (isActive ? styles.active : "")}>
-                  entrar
+                  Entrar
                 </NavLink>
               </li>
 
@@ -28,7 +28,7 @@ const Navbar = () => {
                 <NavLink
                   to='/register'
                   className={({ isActive }) => (isActive ? styles.active : "")}>
-                  cadastrar
+                  Cadastrar
                 </NavLink>
               </li>
             </>
@@ -39,14 +39,14 @@ const Navbar = () => {
                 <NavLink
                   to='/dashboard'
                   className={({ isActive }) => (isActive ? styles.active : "")}>
-                  dashboard
+                  Dashboard
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   to='/post/create'
                   className={({ isActive }) => (isActive ? styles.active : "")}>
-                  novo post
+                  Novo post
                 </NavLink>
               </li>
             </>
@@ -55,11 +55,11 @@ const Navbar = () => {
             <NavLink
               to='/about'
               className={({ isActive }) => (isActive ? styles.active : "")}>
-              sobre
+              Sobre
             </NavLink>
           </li>
 
-          <button onClick={logout} className={styles.exit}>Exit</button>
+          <button onClick={logout} className={styles.logout}>Exit</button>
         </ul>
       </nav>
     </>
