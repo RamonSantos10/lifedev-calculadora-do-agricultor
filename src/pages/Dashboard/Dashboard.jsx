@@ -11,7 +11,7 @@ const Dashboard = () => {
   
   const {documents: posts } = useFetchDocuments("posts", null, uid)
 
-  const (deleteDocument) = useFetchDocument("posts")
+  const {deleteDocument} = useFetchDocument("posts")
   console.log(uid)
   console.log(posts)
 
