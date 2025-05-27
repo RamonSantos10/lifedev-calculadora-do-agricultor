@@ -1,6 +1,6 @@
 import { useState, useEffect, useReducer, use } from "react";
-import db from '../firebase/config'
-import { collection, addDoc, Timestamp } from 'firebase/firestone'
+import {db} from '../firebase/config.jsx'
+import { collection, addDoc, Timestamp } from 'firebase/firestore'
 
 const initialState = {
     loading: null,

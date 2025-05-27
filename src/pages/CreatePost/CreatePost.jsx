@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useInsertDocument } from '../../hooks/useInsertDocument'
 import { useNavigate } from 'react-router-dom'
-import { useAuthValue } from '../../context/AuthContext'
+import { useAuthValue } from '../../context/AuthContex.jsx'
  
 const CreatePost = () => {
  
