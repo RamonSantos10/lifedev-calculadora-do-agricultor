@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Dashboard.module.css'
 import { Link } from 'react-router-dom'
-import { useAuthValue} from '../../context/AuthContext'
+import { useAuthValue} from '../../context/AuthContext.jsx'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import { useFetchDocument } from '../../hooks/useFetchDocument'
 
