@@ -8,7 +8,7 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import CreatePost from './pages/CreatePost/CreatePost'
 import About from './pages/About/About'
 import './App.css'
-import { AuthProvider } from './context/AuthContex'
+import { AuthProvider } from './context/AuthContext'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useState, useEffect } from 'react'
 import { useAuthentication } from './hooks/useAuthentication'
@@ -63,5 +63,6 @@ function App() {
     </div>
   )
 }
+
 
 export default App
