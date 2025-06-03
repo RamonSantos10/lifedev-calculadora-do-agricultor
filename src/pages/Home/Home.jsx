@@ -1,21 +1,22 @@
 import styles from './Home.module.css'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import { useNavigate } from 'react-router-dom'
-
-
-
+import { useState } from 'react'
 const Home = () => {
-  const {documents: posts, loading} = useFetchDocuments()
+  const { documents: posts, loading } = useFetchDocuments()
   const navigate = useNavigate()
   const [query, setQuery] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) =>{
     e.preventDefault()
 
     if(query){
       return navigate(`/search?=${query}`)
     }
   }
+
+  console.log(loading)
+  
   return (
     <>
       <div className={styles.home}>
@@ -24,7 +25,7 @@ const Home = () => {
           <input
             type="text"
             placeholder="Ou busque por tags..."
-            onChange={(e) => experimentalSetDeliveryMetricsExportedToBigQueryEnabled(e.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
           />
           <button className="btn btn-dark">Pesquisar</button>
         </form>
@@ -33,8 +34,8 @@ const Home = () => {
           {posts && posts.length === 0 && (
             <div className={styles.noposts}>
               <p>Não foram encontrados posts</p>
-              <Link to="/post/create" className="btn">
-                Criar primeiro posts
+              <Link to="/posts/create" className="btn">
+                Criar primeiro post
               </Link>
             </div>
           )}

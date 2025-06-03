@@ -59,7 +59,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
             }
 
             setLoading(false)
-        }
+        };
 
         loadData()
     }, [docCollection, search, uid, cancelled])
