@@ -3,16 +3,17 @@ import { useState } from 'react'
 import { useInsertDocument } from '../../hooks/useInsertDocument'
 import { useNavigate } from 'react-router-dom'
 import { useAuthValue } from '../../context/AuthContext.jsx'
+import styles from './CreatePost.module.css'
  
 const CreatePost = () => {
  
-  const [title, setTitle] = useState()
-  const [image, setImage] = useState()
-  const [body, setBody] = useState()
-  const [tags, setTags] = useState()
-  const [formError, setFormError] = useState()
+  const [title, setTitle] = useState("")
+  const [image, setImage] = useState("")
+  const [body, setBody] = useState("")
+  const [tags, setTags] = useState("")
+  const [formError, setFormError] = useState("")
  
-  const { user } = useAuthValue()
+  const user = useAuthValue()
  
   const navigate = useNavigate()
  
@@ -30,8 +31,13 @@ const CreatePost = () => {
  
     const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase())
  
-    if (!title || !image || !tag || !body) {
+    if (!title || !image || !tags || !body) {
       setFormError("Por favor, preencha todos os campos.")
+    }
+
+    if (!user) {
+      setFormError("Usuário não autenticado.")
+      return
     }
  
     console.log(tagsArray)
@@ -43,7 +49,7 @@ const CreatePost = () => {
       tags: tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
-      createAt: new Date()
+      createdAt: new Date()
     })
  
     if (formError) return
@@ -55,7 +61,7 @@ const CreatePost = () => {
       tags: tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
-      createAt: new Date()
+      createdAt: new Date()
     })
  
     navigate("/")

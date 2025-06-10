@@ -10,7 +10,7 @@ const Login = () => {
     const { login, error: authError, loading } = useAuthentication()
 
     const handlerSubmit = async (e) => {
-        e.preventDefaul()
+        e.preventDefault()
 
         setError("")
         const user = {

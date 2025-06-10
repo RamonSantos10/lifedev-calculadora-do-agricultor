@@ -2,19 +2,19 @@ import React from 'react'
 import styles from './Dashboard.module.css'
 import { Link } from 'react-router-dom'
 
-import {useAuthValue} from '../../context/AuthContext'
-import {useFetchDocuments} from '../../hooks/useFetchDocuments'
-import {useFetchDocument} from '../../hooks/useFetchDocument'
+import { useAuthValue } from '../../context/AuthContext'
+import { useFetchDocuments } from '../../hooks/useFetchDocuments'
+import { useDeleteDocument } from '../../hooks/useDeleteDocument'
 
 const Dashboard = () => {
-  const {user} = useAuthValue()
+  const user = useAuthValue()
   const uid = user.uid
 
-  const {documents: posts } = useFetchDocuments("posts",null, uid)
+  const { documents: posts } = useFetchDocuments("posts", null, uid)
 
-  const {deleteDocument} = useFetchDocument("posts")
-  console.log(uid)
-  console.log(posts)
+  const { deleteDocument } = useDeleteDocument("posts")
+  // console.log(uid)
+  console.log("POST DO FIREBASE -> \n" + posts)
   return (
     <>
       <div className={styles.dashboard}>
@@ -23,7 +23,7 @@ const Dashboard = () => {
         {posts && posts.length === 0 ? (
           <div className={styles.noposts}>
             <p>Não foram encontrados posts</p>
-            <Link to="/posts/create" className="btn">
+            <Link to="/post/create" className="btn">
               Criar primeiro post
             </Link>
           </div>
@@ -39,10 +39,10 @@ const Dashboard = () => {
             <div className={styles.post_row} key={post.id}>
               <p>{post.title}</p>
               <div className={styles.actions}>
-                <Link to={`/posts/${post.id}`} className="btn btn-outline">
+                <Link to={`/post/${post.id}`} className="btn btn-outline">
                   Ver
                 </Link>
-                <Link to={`/posts/edit/${post.id}`} className="btn btn-outline">
+                <Link to={`/post/edit/${post.id}`} className="btn btn-outline">
                   Editar
                 </Link>
                 <button
