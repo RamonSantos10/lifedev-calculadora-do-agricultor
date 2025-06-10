@@ -18,7 +18,11 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
     useEffect(() => {
         async function loadData() {
-            if (cancelled) {
+            if (cancelled) return
+            
+            if (!docCollection) {
+                setError("Collection name is required")
+                setLoading(false)
                 return
             }
 
@@ -59,7 +63,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
             }
 
             setLoading(false)
-        }
+        };
 
         loadData()
     }, [docCollection, search, uid, cancelled])

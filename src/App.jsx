@@ -7,6 +7,9 @@ import Register from './pages/Register/Register'
 import Dashboard from './pages/Dashboard/Dashboard'
 import CreatePost from './pages/CreatePost/CreatePost'
 import About from './pages/About/About'
+import Search from './pages/Search/Search'
+import Post from './pages/Post/Post'
+import EditPost from './pages/EditPost/EditPost'
 import './App.css'
 import { AuthProvider } from './context/AuthContext'
 import { onAuthStateChanged } from 'firebase/auth'
@@ -42,6 +45,18 @@ function App() {
               <Route
                 path='/post/create'
                 element={user ? <CreatePost /> : <Navigate to="/login" />}
+              />
+              <Route
+                path='/post/:id'
+                element={user ? <Post /> : <Navigate to="/login" />}
+              />
+              <Route
+                path='/post/edit/:id'
+                element={user ? <EditPost /> : <Navigate to="/login" />}
+              />
+              <Route
+                path='/search'
+                element={user ? <Search /> : <Navigate to="/login" />}
               />
               <Route
                 path='/login'

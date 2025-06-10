@@ -9,16 +9,18 @@ const PostDetail = ({post}) => {
             <h2>{post.title}</h2>
             <p className={styles.createdby}>por: {post.createdby}</p>
             <div className={styles.tags}>
-                {post.tags.map((tags) => (
+                {post.tags.map((tag) => (
                     <p key={tag}>
                         <span>#</span>{tag}
                         </p>))}
             </div>
             <p className={styles.createdat}>data: {post.createdAt}</p>
-            <link to={`/post/${post.id}`} className="btn btn-outline">
+            <Link to={`/post/${post.id}`} className="btn btn-outline">
                 Ler Postagem
-            </link>
+            </Link>
         </div>
         </>
     )
 }
+
+export default PostDetail
